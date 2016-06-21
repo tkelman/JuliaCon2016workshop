@@ -9,6 +9,7 @@ function clone_or_pull(url; pkg=false)
             run(setenv(`git pull`; dir=Pkg.dir(name)))
         else
             Pkg.clone(url)
+            symlink(Pkg.dir(name), dir)
         end
     else
         if isdir(dir)
